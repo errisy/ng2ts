@@ -1,0 +1,1 @@
+C:\HTTP\ng2ts\ng2ts\bin\Debug\ng2ts.exe.config
