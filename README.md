@@ -1,7 +1,6 @@
-# ng2ts
-AngularJS 2 Visual Studio 2015 Example
+# [AngularJS 2 Visual Studio 2015 Example](https://github.com/errisy/ng2ts)
 
-AngularJS 2 beta has been published for quite a while. However, I could not find any example with Visual Studio 2015.
+AngularJS 2 beta has been published for quite a while. There is a [5 min quick start for TypeScript](https://angular.io/docs/ts/latest/quickstart.html). However, I could not find any example about how to get it work with Visual Studio 2015.
 
 Therefore, in order to provide a starter example project to those who use Visual Studio 2015 to write Typescript for AngularJS 2, I made this example that get all TypeScript setting correct for AngularJs 2.
 
