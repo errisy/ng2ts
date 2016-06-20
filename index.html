@@ -14,10 +14,7 @@
 
     <script src="systemjs.config.js"></script>
     <script>
-        //important: System.import('<folder name>') -> this function tells the page which folder to load the 'main.js'.
-        //'main.ts' does not make any sense.
-        //if you change app to app2, it will try to find the folder 'app2', which may not exist. main.js is the file, it wants to load.
-        System.import('app').catch(function (err) { console.error(err); });
+      System.import('app').catch(function(err){ console.error(err); });
     </script>
   </head>
   <body>
