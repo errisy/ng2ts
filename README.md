@@ -41,18 +41,18 @@ For details, check out the original quick start kit: [AngularJS 2 exmaple](https
   To make that work for the browser, i.e. to tell systemjs where to load the module, the file "systemjs.config.js" must be configured by adding a definition in the 'map' object. such as: var map = {"ModuleName": "node_modules/ModuleName"}. Because the browser using systemjs won't be able to know how TypeScript compiler works for nodeJS. In the package object, you can also tell systemjs which one to load.
   
   Typescript declaration file: for "import {Type} from 'ModuleName'", there is no need for declaring a "module". Just export declare everything in the file.
-    ```typescript
-  //projectRoot/node_modules/cat/cat.d.ts
-  interface Cat{
-    meow():string;
-  }
-  declare var tom: Cat;
-  ```
+```typescript
+//projectRoot/node_modules/cat/cat.d.ts
+interface Cat{
+  meow():string;
+}
+declare var tom: Cat;
+```
   When you use it:
-    ```typescript
-  import {tom, Cat} from 'cat';
-  tom.meow();
-  ```
+```typescript
+import {tom, Cat} from 'cat';
+tom.meow();
+```
   Probably as a result of some bug, the typings folder didn't work very well for me at beginning. However, if you want to "import * as obj from 'ModuleName'", you can put a *.d.ts file in a subfolder of the typings folder. But it fails sometimes.
   To enable "import {} from 'modulename'", you 
 
