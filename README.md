@@ -21,9 +21,9 @@ npm install
 For details, check out the original quick start kit: [AngularJS 2 exmaple](https://github.com/angular/quickstart/edit/master/README.md)
 
 ## Notes for Beginners:
-* **Call a function of a child component?**
-...In Angular 2, you can get the reference of any Component in the 'template' by decorating a propary with @ViewChild('id in template').
-...This is something you have to work around in Angular 1 by $scope.$broadcast or by obtaining the reference of a controller through   'two-way binding' of a directive.
+### Call a function of a child component?
+  In Angular 2, you can get the reference of any Component in the 'template' by decorating a propary with @ViewChild('id in template').
+  This is something you have to work around in Angular 1 by $scope.$broadcast or by obtaining the reference of a controller through   'two-way binding' of a directive.
 * **Call a function of a parent component from child component?**
   Just use EventEmitter. However, you need to manually initialize the EventEmitter. Although I used to assume that Angular should do that for me automatically. But it doesn't.
 * **rxjs Observable: map is not a function issue.**
