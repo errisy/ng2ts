@@ -19,3 +19,21 @@ To obtain all the files required for the original [AngularJS 2 exmaple](https://
 npm install
 ```
 For details, check out the original quick start kit: [AngularJS 2 exmaple](https://github.com/angular/quickstart/edit/master/README.md)
+
+## Notes for Beginners:
+* Call a function of a child component? In Angular 2, you can get the reference of any Component in the 'template' by decorating a propary with @ViewChild('id in template').
+  This is something you have to work around in Angular 1 by $scope.$broadcast or by obtaining the reference of a controller through 'two-way binding' of a directive.
+* Call a function of a parent component from child component?
+  Just use EventEmitter. However, you need to manually initialize the EventEmitter. Although I used to assume that Angular should do that for me automatically. But it doesn't.
+* rxjs Observable: map is not a function issue.
+  That's a bug in TypeScript 1.8. If you met that particular problem, you can fix it by checking out [this](https://github.com/Microsoft/TypeScript/issues/7415). To be brief,replace the file "C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\CommonExtensions\Microsoft\TypeScript\typescriptServices.js" with the one found [here](https://raw.githubusercontent.com/Microsoft/TypeScript/Fix8518/lib/typescriptServices.js).
+* Use jQuery.
+  Background: Angular 2 has the AMD loader system, which use 'require' to import modules. In a module, the code has to call the 'define' function to define a module. However, the official js file from jquery defines jQuery as 'jquery', and the AMD loader can only load the jQuery function but not load it as a package with jQuery as a field/property. That caused some trouble with Visual Studio, because the TypeScript Compiler will compile "import * as jQuery from 'jquery'" to "var jquery_1 = require('jquery')". To use jquery with AMD loader jquery.js must define jQuery as a property of the exported object so as to use "import {jQuery} from 'jquery'" syntax. and the jquery.js file can be simply placed there as well.
+  Similarly, other js libraries can modified to fit Angular 2 as well by define proper export.
+* TypeScript declaration file for modules.
+  Where to put them? Since currently, Visual Studio's TypeScript Compiler will mainly search the "node_modules" folder, simply create a folder under "node_modules" and create the index.d.ts file there.
+  To make that work for the browser, i.e. to tell systemjs where to load the module, the file "systemjs.config.js" must be configured by adding a definition in the 'map' object. such as: var map = {"ModuleName": "node_modules/ModuleName"}. Because the browser using systemjs won't be able to know how TypeScript compiler works for nodeJS. In the package object, you can also tell systemjs which one to load.
+  Typescript declaration file: for "import {Type} from 'ModuleName'", there is no need for declaring a "module". Just export declare everything in the file.
+  Probably as a result of some bug, the typings folder didn't work very well for me at beginning. However, if you want to "import * as obj from 'ModuleName'", you can put a *.d.ts file in a subfolder of the typings folder. But it fails sometimes.
+  To enable "import {} from 'modulename'", you 
+
