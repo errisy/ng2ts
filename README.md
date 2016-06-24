@@ -27,9 +27,32 @@ For details, check out the original quick start kit: [AngularJS 2 exmaple](https
   This is something you have to work around in Angular 1 by $scope.$broadcast or by obtaining the reference of a controller through   'two-way binding' of a directive.
 ### Call a function of a parent component from child component?
   Just use EventEmitter. However, you need to manually initialize the EventEmitter. Although I used to assume that Angular should do that for me automatically. But it doesn't.
-  ```typescript
-  @Output('myEvent') public myEvent = new EventEmitter<string>();
-  ```
+```typescript
+//[projectRoot]/app/event.example.ts
+import {Component, Output, EventEmitter} from '@angular/core';
+@Component({
+  selector: '[test]',
+  outputs: ['myEvent'];
+})
+export class EventExample{
+  @Output('myEvent') public myEvent = new EventEmitter<string>(); //you must initialize it yourself.
+}
+```
+When you use it:
+```typescript
+//[projectRoot]/app/app.component.ts
+import {Component} from '@angular/core';
+import {EventExample} from './event.example';
+@Component({
+  template: '<div test (myEvent)="handler($event)"></div>',
+  directives: [EventExample]
+})
+export class AppComponent{
+  handler($event){
+    //your code here to handle the event.
+  }
+}
+```
 ### rxjs Observable: map is not a function issue.
   That's a bug in TypeScript 1.8. If you met that particular problem, you can fix it by checking out [this](https://github.com/Microsoft/TypeScript/issues/7415). To be brief,replace the file "C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\CommonExtensions\Microsoft\TypeScript\typescriptServices.js" with the one found [here](https://raw.githubusercontent.com/Microsoft/TypeScript/Fix8518/lib/typescriptServices.js).
 ### Use jQuery.
@@ -42,7 +65,7 @@ For details, check out the original quick start kit: [AngularJS 2 exmaple](https
   
   Typescript declaration file: for "import {Type} from 'ModuleName'", there is no need for declaring a "module". Just export declare everything in the file.
 ```typescript
-//projectRoot/node_modules/cat/cat.d.ts
+//[projectRoot]/node_modules/cat/cat.d.ts
 interface Cat{
   meow():string;
 }
@@ -50,6 +73,7 @@ declare var tom: Cat;
 ```
   When you use it:
 ```typescript
+//[projectRoot]/app/anyfile.ts
 import {tom, Cat} from 'cat';
 tom.meow();
 ```
