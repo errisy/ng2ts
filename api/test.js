@@ -1,14 +1,12 @@
 "use strict";
-(function invoke(req, res, next) {
-    var _path = './api' + req.url;
-    var jf = require("jf");
-    console.log('nodeJS', jf.nodeJS);
-    console.log('test value: ', jf.testValue);
-    var fs = jf.nodeJS.fs;
-    res.writeHead(200, {
-        "Content-Type": "text/plain"
-    });
-    console.log('api invoked', _path, fs.existsSync(_path));
-    res.end(req.method + 'there is another file let me know we can test this one.');
+var dog_tom_1 = require("../app/dog.tom");
+var req = require('[request]');
+var res = require('[response]');
+var next = require('[next]');
+var d2 = new dog_tom_1.Dog();
+var _path = './api' + req.url;
+res.writeHead(200, {
+    "Content-Type": "text/plain"
 });
+res.end(JSON.stringify(d2));
 //# sourceMappingURL=test.js.map

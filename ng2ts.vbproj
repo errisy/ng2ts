@@ -103,13 +103,15 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <TypeScriptTarget>ES6</TypeScriptTarget>
     <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
-    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptCompileOnSaveEnabled>False</TypeScriptCompileOnSaveEnabled>
     <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
     <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
     <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
@@ -124,15 +126,40 @@
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <ItemGroup>
-    <TypeScriptCompile Include="api\test.ts" />
+    <TypeScriptCompile Include="api\dog.cgi.ts" />
+    <TypeScriptCompile Include="api\test.cgi.ts" />
+    <TypeScriptCompile Include="app\ace.component.ts" />
     <TypeScriptCompile Include="app\app.component.spec.ts" />
     <TypeScriptCompile Include="app\app.component.ts" />
+    <TypeScriptCompile Include="app\code.service.ts" />
+    <TypeScriptCompile Include="app\dog.service.ts" />
+    <TypeScriptCompile Include="app\dog.ts" />
+    <TypeScriptCompile Include="app\test-label.component.ts" />
     <TypeScriptCompile Include="app\main.ts" />
     <TypeScriptCompile Include="bs-config.ts" />
+    <TypeScriptCompile Include="cgi\cgi.ts" />
+    <TypeScriptCompile Include="mime.sys.ts" />
+    <TypeScriptCompile Include="node_modules\ng2ts\dog.ts" />
+    <TypeScriptCompile Include="node_modules\pathreducer\index.ts" />
+    <TypeScriptCompile Include="rpc\client.ts" />
+    <TypeScriptCompile Include="rpc\contract.ts" />
+    <TypeScriptCompile Include="rpc\demo.cgi.ts" />
+    <TypeScriptCompile Include="rpc\demo.client.ts" />
+    <TypeScriptCompile Include="rpc\demo.rpc.ts" />
+    <TypeScriptCompile Include="rpc\util.ts" />
+    <TypeScriptCompile Include="rpc\rpc.ts" />
+    <TypeScriptCompile Include="rpc\sample.demo.ts" />
+    <TypeScriptCompile Include="rpc\serialization.ts" />
+    <TypeScriptCompile Include="rpc\server.ts" />
+    <TypeScriptCompile Include="server.sys.ts" />
+    <TypeScriptCompile Include="watch.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="index.html" />
+    <Content Include="styles.css" />
+    <Content Include="systemjs.config.js" />
   </ItemGroup>
+  <ItemGroup />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
